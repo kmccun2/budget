@@ -1,0 +1,44 @@
+// MAIN
+a {
+  text-decoration: none;
+  color: #2a2a2a;
+}
+a:hover {
+  text-decoration: none;
+  color: #2a2a2a;
+}
+html {
+  margin: 0;
+  padding: 0;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Arial';
+  font-size: 16px !important;
+  font-weight: normal;
+  color: #2a2a2a;
+}
+#root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.my-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100%;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+}
+.hide {
+  display: none !important;
+}
