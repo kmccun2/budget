@@ -1,1 +1,3 @@
+export const SET_LOADING = 'SET_LOADING'
 export const ADD_MONTHS = 'ADD_MONTHS'
+export const SET_SIDEBAR_MONTH = 'SET_SIDEBAR_MONTH'

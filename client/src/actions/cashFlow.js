@@ -1,4 +1,14 @@
-import { ADD_MONTHS } from '../actions/types'
+import { SET_LOADING, ADD_MONTHS, SET_SIDEBAR_MONTH } from '../actions/types'
+import { newRevenue } from './helperFunctions/newRevenue'
+import { newExpense } from './helperFunctions/newExpense'
+
+// Set loading
+export const setLoading = (value) => async (dispatch) => {
+  dispatch({
+    type: SET_LOADING,
+    payload: value,
+  })
+}
 
 // Create transaction routines
 export const cashFlow = () => async (dispatch) => {
@@ -50,39 +60,40 @@ export const cashFlow = () => async (dispatch) => {
   // Create object for each monthly period
   for (let i = Date().toString().split(' ')[3]; i < 2093; i++) {
     if (i === Date().toString().split(' ')[3]) {
-      if (currentmonth < 2) months.push({ name: 'January', month: 1, year: i, revenues: [], expenses: [], on_hand: 0, invested: 0 })
-      if (currentmonth < 3) months.push({ name: 'February', month: 2, year: i, revenues: [], expenses: [], on_hand: 0, invested: 0 })
-      if (currentmonth < 4) months.push({ name: 'March', month: 3, year: i, revenues: [], expenses: [], on_hand: 0, invested: 0 })
-      if (currentmonth < 5) months.push({ name: 'April', month: 4, year: i, revenues: [], expenses: [], on_hand: 0, invested: 0 })
-      if (currentmonth < 6) months.push({ name: 'May', month: 5, year: i, revenues: [], expenses: [], on_hand: 0, invested: 0 })
-      if (currentmonth < 7) months.push({ name: 'June', month: 6, year: i, revenues: [], expenses: [], on_hand: 0, invested: 0 })
-      if (currentmonth < 8) months.push({ name: 'July', month: 7, year: i, revenues: [], expenses: [], on_hand: 0, invested: 0 })
-      if (currentmonth < 9) months.push({ name: 'August', month: 8, year: i, revenues: [], expenses: [], on_hand: 0, invested: 0 })
-      if (currentmonth < 10) months.push({ name: 'September', month: 9, year: i, revenues: [], expenses: [], on_hand: 0, invested: 0 })
-      if (currentmonth < 11) months.push({ name: 'October', month: 10, year: i, revenues: [], expenses: [], on_hand: 0, invested: 0 })
-      if (currentmonth < 12) months.push({ name: 'November', month: 11, year: i, revenues: [], expenses: [], on_hand: 0, invested: 0 })
-      if (currentmonth < 13) months.push({ name: 'December', month: 12, year: i, revenues: [], expenses: [], on_hand: 0, invested: 0 })
+      if (currentmonth < 2) months.push({ name: 'January', month: 1, year: i, revenues: [], expenses: [], on_hand: 0, invested: [] })
+      if (currentmonth < 3) months.push({ name: 'February', month: 2, year: i, revenues: [], expenses: [], on_hand: 0, invested: [] })
+      if (currentmonth < 4) months.push({ name: 'March', month: 3, year: i, revenues: [], expenses: [], on_hand: 0, invested: [] })
+      if (currentmonth < 5) months.push({ name: 'April', month: 4, year: i, revenues: [], expenses: [], on_hand: 0, invested: [] })
+      if (currentmonth < 6) months.push({ name: 'May', month: 5, year: i, revenues: [], expenses: [], on_hand: 0, invested: [] })
+      if (currentmonth < 7) months.push({ name: 'June', month: 6, year: i, revenues: [], expenses: [], on_hand: 0, invested: [] })
+      if (currentmonth < 8) months.push({ name: 'July', month: 7, year: i, revenues: [], expenses: [], on_hand: 0, invested: [] })
+      if (currentmonth < 9) months.push({ name: 'August', month: 8, year: i, revenues: [], expenses: [], on_hand: 0, invested: [] })
+      if (currentmonth < 10) months.push({ name: 'September', month: 9, year: i, revenues: [], expenses: [], on_hand: 0, invested: [] })
+      if (currentmonth < 11) months.push({ name: 'October', month: 10, year: i, revenues: [], expenses: [], on_hand: 0, invested: [] })
+      if (currentmonth < 12) months.push({ name: 'November', month: 11, year: i, revenues: [], expenses: [], on_hand: 0, invested: [] })
+      if (currentmonth < 13) months.push({ name: 'December', month: 12, year: i, revenues: [], expenses: [], on_hand: 0, invested: [] })
     } else {
-      months.push({ name: 'January', month: 1, year: i, revenues: [], expenses: [], on_hand: 0, invested: 0 })
-      months.push({ name: 'February', month: 2, year: i, revenues: [], expenses: [], on_hand: 0, invested: 0 })
-      months.push({ name: 'March', month: 3, year: i, revenues: [], expenses: [], on_hand: 0, invested: 0 })
-      months.push({ name: 'April', month: 4, year: i, revenues: [], expenses: [], on_hand: 0, invested: 0 })
-      months.push({ name: 'May', month: 5, year: i, revenues: [], expenses: [], on_hand: 0, invested: 0 })
-      months.push({ name: 'June', month: 6, year: i, revenues: [], expenses: [], on_hand: 0, invested: 0 })
-      months.push({ name: 'July', month: 7, year: i, revenues: [], expenses: [], on_hand: 0, invested: 0 })
-      months.push({ name: 'August', month: 8, year: i, revenues: [], expenses: [], on_hand: 0, invested: 0 })
-      months.push({ name: 'September', month: 9, year: i, revenues: [], expenses: [], on_hand: 0, invested: 0 })
-      months.push({ name: 'October', month: 10, year: i, revenues: [], expenses: [], on_hand: 0, invested: 0 })
-      months.push({ name: 'November', month: 11, year: i, revenues: [], expenses: [], on_hand: 0, invested: 0 })
-      months.push({ name: 'December', month: 12, year: i, revenues: [], expenses: [], on_hand: 0, invested: 0 })
+      months.push({ name: 'January', month: 1, year: i, revenues: [], expenses: [], on_hand: 0, invested: [] })
+      months.push({ name: 'February', month: 2, year: i, revenues: [], expenses: [], on_hand: 0, invested: [] })
+      months.push({ name: 'March', month: 3, year: i, revenues: [], expenses: [], on_hand: 0, invested: [] })
+      months.push({ name: 'April', month: 4, year: i, revenues: [], expenses: [], on_hand: 0, invested: [] })
+      months.push({ name: 'May', month: 5, year: i, revenues: [], expenses: [], on_hand: 0, invested: [] })
+      months.push({ name: 'June', month: 6, year: i, revenues: [], expenses: [], on_hand: 0, invested: [] })
+      months.push({ name: 'July', month: 7, year: i, revenues: [], expenses: [], on_hand: 0, invested: [] })
+      months.push({ name: 'August', month: 8, year: i, revenues: [], expenses: [], on_hand: 0, invested: [] })
+      months.push({ name: 'September', month: 9, year: i, revenues: [], expenses: [], on_hand: 0, invested: [] })
+      months.push({ name: 'October', month: 10, year: i, revenues: [], expenses: [], on_hand: 0, invested: [] })
+      months.push({ name: 'November', month: 11, year: i, revenues: [], expenses: [], on_hand: 0, invested: [] })
+      months.push({ name: 'December', month: 12, year: i, revenues: [], expenses: [], on_hand: 0, invested: [] })
     }
   }
   // Add up revenues
   // Iterate months
   let money_on_hand = 28000
+  let total_roth = 0
 
   months.map((month) => {
-    // Reveneues
+    // Revenues
     newRevenue(month, 'Performance', 3402.92, 0.03, undefined, 2052)
     newRevenue(month, 'Pitching Lessons', 500, 0, undefined, 2052)
     newRevenue(month, 'St Joes', 2700, 0, undefined, 2021)
@@ -105,6 +116,7 @@ export const cashFlow = () => async (dispatch) => {
     newExpense(month, 'Spotify', 15, 'monthly')
     newExpense(month, 'Cinemark', 9, 'monthly')
     newExpense(month, 'Progressive', 1316, 'bianual')
+    newExpense(month, 'Roth', 12000, 'Roth', undefined, 2062)
 
     // Add up revenues
     month.revenues.map((rev) => {
@@ -127,6 +139,15 @@ export const cashFlow = () => async (dispatch) => {
     money_on_hand = month.on_hand
     month.on_hand = month.on_hand.toFixed(2)
 
+    // Carry over money on investments
+    let roth_expense = 0
+    // =$D$2*2^((C2-$C$2)/10)
+    month.expenses.map((exp) => {
+      if (exp.name === 'Roth') roth_expense = parseFloat(exp.amount)
+    })
+    total_roth = total_roth * 2 ** (1 / 120) + roth_expense
+    month.invested.push({ name: 'Roth', amount: total_roth })
+
     return month
   })
 
@@ -139,24 +160,9 @@ export const cashFlow = () => async (dispatch) => {
   })
 }
 
-// New revenue function
-const newRevenue = (month, title, amount, raise, starting, ending) => {
-  // Salary calculation for each month given raise amount
-  let new_salary = amount
-  for (let i = 0; i < month.year - Date().toString().split(' ')[3]; i++) {
-    new_salary = (new_salary * (raise + 1)).toFixed(2)
-  }
-  // Add revenue to money
-  if ((starting === undefined || starting <= month.year) && (ending === undefined || ending > month.year))
-    month.revenues.push({ name: title, amount: parseFloat(new_salary) })
-}
-
-// New expense function
-const newExpense = (month, title, amount, time, starting, ending) => {
-  // Add revenue to money
-  if ((starting === undefined || starting <= month.year) && (ending === undefined || ending > month.year)) {
-    if (time === 'monthly') month.expenses.push({ name: title, amount: parseFloat(amount) })
-    if (time === 'yearly' && month.month === 12) month.expenses.push({ name: title, amount: parseFloat(amount) })
-    if (time === 'bianual' && (month.month === 6 || month.month === 12)) month.expenses.push({ name: title, amount: parseFloat(amount) })
-  }
+export const setSidebarMonth = (month) => async (dispatch) => {
+  dispatch({
+    type: SET_SIDEBAR_MONTH,
+    payload: month,
+  })
 }

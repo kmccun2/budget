@@ -19,6 +19,7 @@ const MainPage = ({ cashFlow, months, sidebarMonth }) => {
 }
 
 const mapStateToProps = (state) => ({
+  loading: state.cashFlow.loading,
   months: state.cashFlow.months,
   sidebarMonth: state.cashFlow.sidebarMonth,
 })
