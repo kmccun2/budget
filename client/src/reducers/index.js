@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import stock from './stock'
+import cashFlow from './cashFlow'
 
 export default combineReducers({
-  stock,
+  cashFlow,
 })
