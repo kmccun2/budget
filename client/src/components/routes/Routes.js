@@ -1,17 +1,27 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import MainPage from '../main/MainPage'
 import { Switch, Route } from 'react-router-dom'
+import { connect } from 'react-redux'
 import NotFound from '../misc/NotFound'
+import Register from '../auth/Register'
+import Login from '../auth/Login'
+import PrivateRoute from '../routes/PrivateRoute'
+import { loadUser, setAuthLoading } from '../../actions/auth'
 
 const Routes = () => {
   return (
-    <section className='content-body'>
+    <Fragment>
       <Switch>
-        <Route exact path='/' component={MainPage} />
+        <Route exact path='/register' component={Register} />
+        <Route exact path='/' component={Login} />
+        <PrivateRoute exact path='/dashboard' component={MainPage} />
         <Route component={NotFound} />
       </Switch>
-    </section>
+    </Fragment>
   )
 }
 
-export default Routes
+export default connect(null, {
+  loadUser,
+  setAuthLoading,
+})(Routes)

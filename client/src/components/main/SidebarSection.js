@@ -1,4 +1,5 @@
 import React from 'react'
+import { formatNumber } from '../../actions/helperFunctions/formatNumber'
 
 const SidebarSection = ({ header, value, sub_items, color }) => {
   return (
@@ -11,12 +12,12 @@ const SidebarSection = ({ header, value, sub_items, color }) => {
       </div>
       {sub_items &&
         sub_items.map((item) => (
-          <div className='sbs-item' style={{ paddingLeft: 15 }}>
+          <div className='sbs-item' key={item.id} style={{ paddingLeft: 15 }}>
             <div className='sbs-header' style={{ fontSize: 14 }}>
               {item.name}
             </div>
             <div className='sbs-content' style={{ fontSize: 14, color: color }}>
-              ${parseFloat(item.amount).toFixed(2)}
+              ${formatNumber(parseFloat(item.amount).toFixed(2))}
             </div>
           </div>
         ))}

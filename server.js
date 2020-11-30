@@ -16,7 +16,9 @@ app.use(
 )
 
 // Define Routes
-app.use('/api/stock', require('./routes/api/stock'))
+app.use('/api/users', require('./routes/api/users'))
+app.use('/api/auth', require('./routes/api/auth'))
+app.use('/api/profile', require('./routes/api/profile'))
 
 // Serve static assets in production
 if (process.env.NODE_ENV === 'production') {

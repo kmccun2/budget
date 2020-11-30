@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid'
+
 export const newRevenue = (month, title, amount, raise, starting, ending) => {
   // Salary calculation for each month given raise amount
   let new_salary = amount
@@ -6,5 +8,5 @@ export const newRevenue = (month, title, amount, raise, starting, ending) => {
   }
   // Add revenue to money
   if ((starting === undefined || starting <= month.year) && (ending === undefined || ending > month.year))
-    month.revenues.push({ name: title, amount: parseFloat(new_salary) })
+    month.revenues.push({ name: title, amount: parseFloat(new_salary), id: uuidv4() })
 }

@@ -12,7 +12,7 @@ const MainPage = ({ cashFlow, months, sidebarMonth }) => {
 
   return (
     <Fragment>
-      <Months months={months} />
+      <Months sidebarMonth={sidebarMonth} months={months} />
       <Sidebar month={sidebarMonth} />
     </Fragment>
   )

@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://kurtisleaux:Hope4JM#39@cluster0.jvcff.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "mysecretoken"
+}
